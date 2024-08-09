@@ -8,6 +8,3 @@ func main(){
 }
 
 
-func fooo(){
-  fmt.Println("foo")
-}

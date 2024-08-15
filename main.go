@@ -1,10 +1,35 @@
 package main
 
-func main() {
-    trackerAddress := "tracker.openbittorrent.com:80" // UDP address
-    infoHash := "d2474e86c95b19b8bcfdb92bc12c9d44667cfa36"
-    peerID := "ABCDEFGHIJKLMNOPQRST"
+import (
+	"fmt"
+	bencode "github.com/IncSW/go-bencode"
+)
 
-    ConnectToUDPTracker(trackerAddress, infoHash, peerID)
+func main() {
+	fmt.Println("Test Bencode encoding and decoding")
+
+	// Sample data to encode
+	data := map[string]interface{}{
+		"foo":  1,
+		"bar":  "baz",
+		"list": []interface{}{1, 2, 3},
+	}
+
+  encodedData, err := bencode.Marshal(data)
+  if err != nil {
+    fmt.Println("Error during encoding:", err)
+  }
+
+	fmt.Println("Encoded data:", string(encodedData))
+
+	// Decode the data
+	decodedData, err := bencode.Unmarshal([]byte(encodedData))
+	if err != nil {
+		fmt.Println("Error during decoding:", err)
+		return
+	}
+
+	// Print the decoded data
+	fmt.Printf("Decoded data: %#v\n", decodedData)
 }
 

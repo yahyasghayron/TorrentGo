@@ -5,5 +5,5 @@ import (
 )
 
 func ConnectToTracker() {
-  fmt.Println("Connecting to tracker...")
+  fmt.Println("Connecting to tracker...   ")
 }
